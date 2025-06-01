@@ -17,7 +17,7 @@ typedef struct {
 int main(void) {
   char line[MAX_LINE_LEN + 1];
   vec_t visited;
-  pos_t santa;
+  pos_t santa, robot, *ptr;
   size_t idx, jdx;
 
   visited.cap = MAX_LINE_LEN;
@@ -29,30 +29,33 @@ int main(void) {
   }
 
   santa.x = santa.y = 0;
+  robot.x = robot.y = 0;
   visited.lst[0].x = visited.lst[0].y = 0;
   visited.len = 1;
 
   while (fgets(line, sizeof(line), stdin)) {
     for (idx = 0; idx < strlen(line); idx++) {
+      ptr = idx % 2 == 0 ? &santa : &robot;
+
       switch (line[idx]) {
       case '^':
-        santa.y++;
+        ptr->y++;
         break;
       case 'v':
-        santa.y--;
+        ptr->y--;
         break;
       case '>':
-        santa.x++;
+        ptr->x++;
         break;
       case '<':
-        santa.x--;
+        ptr->x--;
         break;
       default:
         continue;
       }
 
       for (jdx = 0; jdx < visited.len; jdx++) {
-        if (visited.lst[jdx].x == santa.x && visited.lst[jdx].y == santa.y) {
+        if (visited.lst[jdx].x == ptr->x && visited.lst[jdx].y == ptr->y) {
           break;
         }
       }
@@ -70,8 +73,8 @@ int main(void) {
         }
       }
 
-      visited.lst[visited.len].x = santa.x;
-      visited.lst[visited.len].y = santa.y;
+      visited.lst[visited.len].x = ptr->x;
+      visited.lst[visited.len].y = ptr->y;
       visited.len++;
     }
   }
