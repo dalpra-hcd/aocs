@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -std=c89 -pedantic -Wall -Wextra -Werror
+CFLAGS = -std=c89 -pedantic -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L
 CFLAGS += -g -fsanitize=address
 
 TARGET = aocs
