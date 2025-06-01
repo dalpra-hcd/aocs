@@ -23,8 +23,7 @@ int main(void) {
 
       MD5((const unsigned char *)buf, len, digest);
 
-      if ((digest[0] == 0x00 && digest[1] == 0x00 &&
-           (digest[2] & 0xF0) == 0x00)) {
+      if (digest[0] == 0x00 && digest[1] == 0x00 && digest[2] == 0x00) {
         printf("%ld\n", num);
         break;
       }
