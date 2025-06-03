@@ -33,7 +33,7 @@ static int is_nice(const char *s) {
 }
 
 int main(void) {
-  char line[MAX_LINE_LEN + 1];
+  char line[MAX_LINE_LEN + 2];
   int nice_cnt;
 
   nice_cnt = 0;

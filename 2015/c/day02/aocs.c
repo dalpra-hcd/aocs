@@ -4,7 +4,7 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 int main(void) {
-  char line[MAX_LINE_LEN + 1];
+  char line[MAX_LINE_LEN + 2];
   int total;
 
   total = 0;

@@ -3,7 +3,7 @@
 #define MAX_LINE_LEN 7000
 
 int main(void) {
-  char line[MAX_LINE_LEN + 1];
+  char line[MAX_LINE_LEN + 2];
 
   while (fgets(line, sizeof(line), stdin) != NULL) {
     int i, floor;

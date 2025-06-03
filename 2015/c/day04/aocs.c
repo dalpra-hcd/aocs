@@ -7,7 +7,7 @@
 #define MAX_BUF_LEN 64
 
 int main(void) {
-  char line[MAX_LINE_LEN + 1];
+  char line[MAX_LINE_LEN + 2];
   char buf[MAX_BUF_LEN];
   unsigned char digest[MD5_DIGEST_LENGTH];
   size_t num, len;

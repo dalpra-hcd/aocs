@@ -15,7 +15,7 @@ typedef struct {
 } vec_t;
 
 int main(void) {
-  char line[MAX_LINE_LEN + 1];
+  char line[MAX_LINE_LEN + 2];
   vec_t visited;
   pos_t santa, robot, *ptr;
   size_t idx, jdx;
