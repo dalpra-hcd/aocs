@@ -27,13 +27,15 @@ static void apply_op(int grid[MAX_GRID_SIZE][MAX_GRID_SIZE], enum Op op, int x0,
     for (x = x0; x <= x1; ++x) {
       switch (op) {
       case OP_ON:
-        grid[y][x] = 1;
+        grid[y][x] += 1;
         break;
       case OP_OFF:
-        grid[y][x] = 0;
+        if (grid[y][x] > 0) {
+          grid[y][x] -= 1;
+        }
         break;
       case OP_TOGGLE:
-        grid[y][x] = !grid[y][x];
+        grid[y][x] += 2;
         break;
       default:
         break;
