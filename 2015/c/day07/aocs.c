@@ -145,6 +145,8 @@ static void parse_line(char *line) {
 
 int main(void) {
   char line[MAX_LINE_LEN + 2];
+  struct wire_t *wb;
+  uint16_t i, a;
 
   while (fgets(line, sizeof(line), stdin)) {
     line[strcspn(line, "\r\n")] = '\0';
@@ -152,6 +154,19 @@ int main(void) {
       parse_line(line);
     }
   }
+
+  a = eval("a");
+
+  for (i = 0; i < wire_cnt; ++i) {
+    wires[i].is_set = 0;
+    wires[i].res = 0;
+  }
+
+  wb = get_wire("b");
+  wb->inst.op = OP_SET;
+  wb->inst.lhs.is_const = 1;
+  snprintf(wb->inst.lhs.name, MAX_NAME_LEN, "%u", a);
+  wb->inst.rhs.name[0] = '\0';
 
   printf("%u\n", eval("a"));
   return 0;
